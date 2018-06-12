@@ -1,0 +1,153 @@
+<div class="container">
+    <div class="col-sm-4 col-sm-pull-8">
+        <form class="form-horizontal"  #f="ngForm" (ngSubmit)="onSubmit(f.value);f.reset()">
+          <div class="form-group">
+            <div class="row">
+              <div class="col-25">
+                <label for="name">Name:</label>
+              </div>
+              <div class="col-75">
+                <input
+                required
+                pattern="[A-Za-z\s]{3,15}" 
+                ngModel
+                name="name"
+                type="text"
+                #name="ngModel"
+                placeholder="Enter Name" 
+                class="form-control">
+                <div class="alert alert-danger" *ngIf="name.touched && !name.valid">Please enter a valid name!</div>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-25">
+                <label for="phno">PhoneNo:</label>
+              </div>
+              <div class="col-75">
+                <input
+                required
+                maxlength="10"
+                pattern="^\d{10}$"
+                ngModel
+                name="phno"
+                #phno="ngModel" 
+                type="number" 
+                class="form-control"
+                placeholder="Enter Phno Number">
+                <div class="alert alert-danger" *ngIf="phno.touched && !phno.valid">Please enter a valid Phone number!</div>
+              </div>
+            </div>
+          <div class="row">
+              <div class="form-group">
+                  <div class="col-25">
+                      <label for="slctMethod">Select:</label>
+                  </div>
+                  <div class="col-75 sel">
+                      <select
+                        required
+                        ngModel 
+                        #slctMethod="ngModel"
+                        class="form-control" 
+                        name="slctMethod" 
+                        id="slctMethod">
+                        <option value="option1">option1</option> 
+                        <option value="option2">option2</option> 
+                        <option value="option3">option3</option> 
+                        <option value="option4">option4</option> 
+                        <option value="option5">option5</option>  
+                        </select>
+                        <div class="alert alert-danger" *ngIf="slctMethod.touched && slctMethod.invalid">Please select one option</div>
+                  </div>
+                </div>
+          </div>
+            <div class="row">
+              <div class="col-25">
+                <label>Radio</label>
+              </div>
+              <div class="col-75">
+                  <div class="radio">
+                      <label>
+                        <input
+                         required
+                         ngModel
+                         type="radio" 
+                         name="gender" 
+                         value="male"
+                         #gender="ngModel">
+                        Male
+                      </label>
+                      </div>
+                      <div class="radio">
+                          <label>
+                            <input 
+                            required
+                            ngModel
+                            type="radio" 
+                            name="gender" 
+                            value="female"
+                            #gender="ngModel">
+                            Female
+                          </label>
+                          </div> 
+                          <div class="alert alert-danger" *ngIf="gender.touched && gender.invalid">Please select one Gender!</div>
+              </div>
+            </div>
+                  <div class="row">
+                    <div class="col-25">
+                      <label>Checkbox:</label>
+                    </div>
+                    <div class="col-75">
+                        <div class="checkbox">
+                            <label class="check">
+                              <input 
+                              required 
+                              type="checkbox" 
+                              ngModel
+                              name="checkbox"
+                              #checkbox="ngModel" 
+                              name="isSubscribe">Subscribe
+                            </label>
+                            <div class="alert alert-danger" *ngIf="checkbox.touched && !checkbox.valid">Please check the the box</div>
+                          </div>
+                    </div>
+                  </div>
+                  <div class="row">
+                      <div class="col-25">
+                          <label for="">Email</label>
+                          </div>
+                          <div class="col-75">
+                              <input
+                              required 
+                              ngModel 
+                              #email="ngModel"
+                              name="email" 
+                              type="email" 
+                              class="form-control"
+                              placeholder="Email Address">
+                              <div class="alert alert-danger" *ngIf="email.touched && !email.valid">Email Id is required</div>
+                          </div>
+                        </div>
+          <div class="row">
+              <div class="col-25">
+                  <label for="address">Address</label>
+                </div>
+                <div class="col-75">
+                  <input 
+                  required
+                  minlength="6"
+                  maxlength="30"
+                  type="address"
+                  ngModel
+                  #address="ngModel"
+                  name="address"
+                  class="form-control"
+                  placeholder="Enter Address">
+                  <div class="alert alert-danger" *ngIf="address.touched && !address.valid">Address is required</div>
+                </div>
+                </div>
+          </div>
+          <button class="btn btn-primary"  type="submit" [disabled]="!f.valid">Submit</button>
+        </form>
+      </div>
+</div>
+
